@@ -16,3 +16,5 @@ to this in your browser, and you can call your Go code from devtools.
 ## Building
 
 To build a redistributable, production mode package, use `wails build`.
+
+More info see https://wails.io/ . You need to install the wails cli to build it in addition to golang and some other dependencies (not much, just webkit development)
