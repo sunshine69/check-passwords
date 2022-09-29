@@ -13,7 +13,7 @@ var (
 
 func (a *App) CheckPasswords(passText string) string {
 	passList := strings.Split(passText, "\n")
-	fmt.Println("passList", passList)
+	//fmt.Println("passList", passList)
 	output := []string{}
 	for _, pass := range passList {
 		sha1text := strings.ToUpper(u.Sha1Sum(pass))
