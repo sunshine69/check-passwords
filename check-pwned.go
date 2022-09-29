@@ -16,7 +16,7 @@ func (a *App) CheckPasswords(passText string) string {
 	fmt.Println("passList", passList)
 	output := []string{}
 	for _, pass := range passList {
-		sha1text := strings.ToUpper( u.Sha1Sum(pass) )
+		sha1text := strings.ToUpper(u.Sha1Sum(pass))
 		// fmt.Println( sha1text )
 		o := CheckPasswordByHash(sha1text)
 		if o != "" {
@@ -24,7 +24,7 @@ func (a *App) CheckPasswords(passText string) string {
 		}
 	}
 	if len(output) == 0 {
-		return "OK no compromised found.\nEnter new data to check:"
+		return "OK no compromised found."
 	}
 	return "ERROR Your passwords have been found in haveibeenpwned database. Change the password ASSAP. See below for each compromized pass and how many times it appear to be compormised\r\n\r\n" + strings.Join(output, "\r\n")
 }
