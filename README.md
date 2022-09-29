@@ -2,7 +2,9 @@
 
 ## About
 
-This is the official Wails Svelte template.
+This is a tool to check if your password is in the compromized database. Use the api in here https://haveibeenpwned.com/Passwords, they do have a check but I do not trust them so I wrote this - be sure my password is not sent over the internet. Only 5 first char of your SHA1 hash of the password is sent 
+
+
 
 ## Live Development
 
