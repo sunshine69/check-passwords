@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	u "github.com/sunshine69/golang-tools/utils"
+	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
 var (
@@ -24,9 +25,23 @@ func (a *App) CheckPasswords(passText string) string {
 		}
 	}
 	if len(output) == 0 {
+		_, err := runtime.MessageDialog(a.ctx, runtime.MessageDialogOptions{
+			Title:   "It's OK",
+			Message: "OK no compromised found.",
+			// Buttons: []string{"one", "two", "three", "four"},
+		})
+		u.CheckErr(err, "MessageDialog")
 		return "OK no compromised found."
 	}
-	return "ERROR Your passwords have been found in haveibeenpwned database. Change the password ASSAP. See below for each compromized pass and how many times it appear to be compormised\r\n\r\n" + strings.Join(output, "\r\n")
+	msg := "ERROR Your passwords have been found in haveibeenpwned database. Change the password ASSAP. See below for each compromized pass and how many times it appear to be compormised\r\n\r\n" + strings.Join(output, "\r\n")
+	_, err := runtime.MessageDialog(a.ctx, runtime.MessageDialogOptions{
+		Title:   "It's NOT OK",
+		Message: msg,
+		// Buttons: []string{"one", "two", "three", "four"},
+	})
+
+	u.CheckErr(err, "MessageDialog")
+	return "ERROR"
 }
 
 func CheckPasswordByHash(hash string) string {

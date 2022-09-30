@@ -10,7 +10,7 @@
     Greet(name).then(result => questionText = result)
   }
   function check_password() {
-    CheckPasswords(pass_text).then(result => alert(result))
+    CheckPasswords(pass_text).then(result => console.log(result))
   }
 </script>
 
